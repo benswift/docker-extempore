@@ -2,6 +2,8 @@
 
 Dockerfiles for [Extempore](http://github.com/digego/extempore)
 
+Requires `debian:testing` from DockerHub
+
 `extempore-llvm` creates a container containing a patched version of
 LLVM which works with Extempore. It is build separately because it
 takes a long time to build.
