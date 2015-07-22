@@ -47,3 +47,7 @@ RUN apt-get remove --purge --yes \
 EXPOSE 7099 7098 7199
 
 ENTRYPOINT ["/extempore/extempore"]
+
+# Local Variables:
+# compile-command: "docker build -t benswift/extempore ."
+# End:

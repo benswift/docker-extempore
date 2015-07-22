@@ -33,3 +33,8 @@ RUN curl -O http://llvm.org/releases/3.4.1/llvm-3.4.1.src.tar.gz &&             
     rm -rf /llvm-3.4.1.src
 
 VOLUME /llvm-build
+
+# Local Variables:
+# compile-command: "docker build -t benswift/extempore-llvm ."
+# End:
+
