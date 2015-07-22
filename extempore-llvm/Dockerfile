@@ -32,14 +32,4 @@ RUN curl -O http://llvm.org/releases/3.4.1/llvm-3.4.1.src.tar.gz &&             
     cd / &&                                                                                                         \
     rm -rf /llvm-3.4.1.src
 
-# remove build-time deps from image
-RUN apt-get remove --purge --yes \
-    binutils                     \
-    curl                         \
-    g++                          \
-    make                         \
-    patch                        \
-    python                       \
-    unzip
-
 VOLUME /llvm-build

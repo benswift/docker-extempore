@@ -1,4 +1,4 @@
-FROM debian:testing
+FROM benswift/extempore-llvm
 
 # based on an original dockerfile by Sébastien Rannou
 MAINTAINER Ben Swift <ben@benswift.me>
@@ -8,18 +8,11 @@ ENV EXTEMPORE_GH_BRANCH dev
 
 # get deps (listed in alphabetical order)
 RUN apt-get update --yes && apt-get install --yes \
-    binutils                                      \
-    curl                                          \
-    g++                                           \
     libasound2                                    \
     libgl1-mesa-dev                               \
     libpcre3-dev                                  \
-    make                                          \
     libnanomsg0                                   \
-    patch                                         \
-    portaudio19-dev                               \
-    python                                        \
-    unzip &&                                      \
+    portaudio19-dev &&                            \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # download extempore
