@@ -20,8 +20,13 @@ docker build -t extempore .
 The `--privileged` flag is necessary to run with audio/graphics
 
 ```
-docker run --rm -t -i -p 7098:7098 -p 7099:7099 --volumes-from extempore-llvm --privileged extempore
+docker run --rm -t -i --privileged extempore
 ```
+
+## DockerHub
+
+I'll try and keep it up-to-date on DockerHub as `benswift/extempore`,
+so then you can just `docker pull benswift/extempore`.
 
 ## Caveats
 
