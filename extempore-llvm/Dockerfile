@@ -4,10 +4,9 @@ FROM ubuntu:vivid
 MAINTAINER Ben Swift <ben@benswift.me>
 
 # need to use a PPA for an up-to-date CMake version (3.1 required)
-RUN apt-get install --yes software-properties-common && add-apt-repository ppa:george-edison55/cmake-3.x && apt-get update --yes
-
-# get other deps (listed in alphabetical order)
-RUN apt-get install --yes binutils curl g++ cmake patch python unzip xzdec && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get install --yes software-properties-common && add-apt-repository ppa:george-edison55/cmake-3.x && apt-get update --yes && \
+    apt-get install --yes binutils curl g++ cmake patch python unzip xzdec && \
+    add-apt-repository --remove ppa:george-edison55/cmake-3.x && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # download, patch, and build LLVM
 RUN curl -O http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz && \
