@@ -4,13 +4,11 @@ FROM benswift/extempore-llvm
 MAINTAINER Ben Swift <ben@benswift.me>
 
 # which GitHub branch to build Extempore from
-ENV EXTEMPORE_GH_BRANCH llvm-3.7
+ENV EXTEMPORE_GH_BRANCH dev
 
 # get deps (listed in alphabetical order)
 RUN apt-get update --yes && apt-get install --yes \
-    libasound2                                    \
-    # libnanomsg0                                   \
-    portaudio19-dev &&                            \
+    libasound2-dev &&                             \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # download extempore
