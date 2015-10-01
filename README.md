@@ -18,8 +18,17 @@ docker build -t extempore .
 ## Usage
 
 ```
-docker run --rm benswift/extempore --noaudio
+docker run --rm -P benswift/extempore --noaudio
 ```
+The `-P` flag binds all the exposed ports to the host. If you're
+running in `docker-machine`, you'll first need to run
+```
+docker-machine ip machine-name
+```
+to get the IP address of your machine, then look at `docker ps` to see
+where the ports have been mapped. Use these values as the host and
+port respectively when you connect your editor to the Extempore
+process running inside the container.
 
 The `--noaudio` flag means that Extempore doesn't try to find an audio
 device---which requires special privileges. You can pass the
