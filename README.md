@@ -2,11 +2,11 @@
 
 Dockerfiles for [Extempore](http://github.com/digego/extempore)
 
-Requires `debian:testing` from DockerHub
+Uses `ubuntu:vivid` from DockerHub as a base container.
 
-`extempore-llvm` creates a container containing a patched version of
-LLVM which works with Extempore. It is build separately because it
-takes a long time to build.
+`extempore-llvm` is a container containing a patched version of LLVM
+which works with Extempore. It is built separately because it takes a
+long time to build.
 
 ## Build
 
@@ -17,11 +17,13 @@ docker build -t extempore .
 
 ## Usage
 
-The `--privileged` flag is necessary to run with audio/graphics
+```
+docker run --rm benswift/extempore --noaudio
+```
 
-```
-docker run --rm -t -i --privileged extempore
-```
+The `--noaudio` flag means that Extempore doesn't try to find an audio
+device---which requires special privileges. You can pass the
+`--privileged` flag to `docker run` if you want to use audio/graphics.
 
 ## DockerHub
 
