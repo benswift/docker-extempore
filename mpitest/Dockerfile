@@ -2,7 +2,7 @@ FROM ubuntu:vivid
 
 MAINTAINER Ben Swift <ben@benswift.me>
 
-RUN apt-get update --yes && apt-get install --yes binutils gcc libopenmpi-dev openmpi-bin && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update --yes && apt-get install --yes binutils gcc ssh libopenmpi-dev openmpi-bin && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD mpi_mm.c /
 
