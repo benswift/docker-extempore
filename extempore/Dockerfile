@@ -1,14 +1,14 @@
-FROM benswift/extempore-llvm
+FROM ubuntu:wily
 
 # based on an original dockerfile by Sébastien Rannou
 MAINTAINER Ben Swift <ben@benswift.me>
 
 # which GitHub branch to build Extempore from
-ENV EXTEMPORE_GH_BRANCH dev
+ENV EXTEMPORE_GH_BRANCH master
 
 # get deps (listed in alphabetical order)
 RUN apt-get update --yes && apt-get install --yes \
-    libasound2-dev &&                             \
+    binutils curl g++ cmake patch python unzip xzdec libasound2-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # download extempore
@@ -16,9 +16,6 @@ RUN curl -L -o source.zip http://github.com/digego/extempore/zipball/$EXTEMPORE_
     unzip source.zip && \
     mv $(ls | grep extempore) /extempore && \
     rm source.zip
-
-# set LLVM environment var
-ENV EXT_LLVM_DIR /llvm-build
 
 # build extempore
 RUN mkdir /extempore/cmake-build && cd /extempore/cmake-build && cmake -DIN_TREE=ON .. && make && cp extempore .. && cd /extempore
